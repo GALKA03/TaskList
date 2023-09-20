@@ -1,0 +1,34 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.loginSchema = exports.registrationSchema = void 0;
+const joi_1 = __importDefault(require("joi"));
+exports.registrationSchema = joi_1.default.object({
+    name: joi_1.default.string()
+        .min(2)
+        .max(15)
+        .required(),
+    email: joi_1.default.string()
+        .email()
+        .required(),
+    password: joi_1.default.string()
+        .min(6)
+        .max(10)
+        .pattern(/[A-Z]/)
+        .pattern(/[a-z]/)
+        .required(),
+});
+exports.loginSchema = joi_1.default.object({
+    user_email: joi_1.default.string()
+        .email()
+        .required(),
+    user_password: joi_1.default.string()
+        .min(6)
+        .max(10)
+        .pattern(/[A-Z]/)
+        .pattern(/[a-z]/)
+        .required(),
+});
+//# sourceMappingURL=validateAuth.js.map
