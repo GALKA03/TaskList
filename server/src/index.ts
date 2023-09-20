@@ -21,7 +21,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
-app.use('/', express.static(join(__dirname, 'public')))
+// app.use('/', express.static(join(__dirname, 'public')))
 app.use("/", router());
 
 
