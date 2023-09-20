@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { fetchLogin } from "@/app/api";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers,FieldProps } from "formik";
 import * as Yup from "yup";
 // import{useAuth} from "../../app/context/AuthContext"
 import { useRouter } from "next/navigation";
@@ -65,7 +65,7 @@ const LoginSchema = Yup.object().shape({
 
 
   return (
-    <Container component="main" maxWidth="lg">
+    <Container component="section" className="h-screen" maxWidth="lg">
   <CssBaseline />
   <Box sx={{ marginTop: 8 }}>
     <Grid container>
@@ -89,23 +89,34 @@ const LoginSchema = Yup.object().shape({
 >
     {({ isSubmitting }) => (
         <Form>
-            <Field
-                name="user_email"
-                as={TextField}
-                label="Email Address"
-                fullWidth
-                required
-                margin="normal"
-            />
-            <Field
-                name="user_password"
-                type="password"
-                as={TextField}
-                label="Password"
-                fullWidth
-                required
-                margin="normal"
-            />
+            <Field name="user_email">
+    {({ field, meta }: FieldProps<string>) => (
+        <TextField
+            {...field}
+            label="Email Address"
+            fullWidth
+            required
+            margin="normal"
+            error={meta.touched && Boolean(meta.error)} // If the field has been touched and there's an error
+            helperText={meta.touched ? meta.error : ""} // Display error message when field is touched
+        />
+    )}
+</Field>
+            <Field name="user_password">
+    {({ field, meta }: FieldProps<string>) => (
+        <TextField
+            {...field}
+            type="password"
+            label="Password"
+            fullWidth
+            required
+            margin="normal"
+            error={meta.touched && Boolean(meta.error)} // If the field has been touched and there's an error
+            helperText={meta.touched ? meta.error : ""} // Display error message when field is touched
+        />
+    )}
+</Field>
+
             <Button
                 type="submit"   // Add the type="submit" 
                 fullWidth

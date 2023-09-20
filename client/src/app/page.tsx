@@ -6,9 +6,9 @@ export default async function Home() {
   // const tasks = await getAllTasks()
  
   return (
-   
-       <LoginPage/>
+   <main className="h-screen" >
+       <LoginPage />
      
-          
+          </main>
  )
 }
