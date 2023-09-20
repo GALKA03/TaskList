@@ -18,6 +18,7 @@ const database_1 = __importDefault(require("./db/database"));
 const index_1 = __importDefault(require("./router/index"));
 const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const path_1 = __importDefault(require("path"));
 require("dotenv").config();
 const PORT = 8088;
 exports.app = (0, express_1.default)();
@@ -29,21 +30,13 @@ exports.app.use((0, cors_1.default)({
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
-// app.use('/', express.static(join(__dirname, 'public')))
+//  app.use('/', express.static(join(__dirname, 'public')))
+exports.app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
 exports.app.use("/", (0, index_1.default)());
 exports.app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Something broke!");
 });
-// app.post('/users', async (req, res) => {
-//     try {
-//         const user = await createUser(req.body);
-//         return res.json(user);
-//     } catch (error) {
-//         console.error("Error:", error);  // Log the error
-//         return res.status(500).json({ error: error.message });  // Send back the error message
-//     }
-// });
 const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield database_1.default.authenticate();

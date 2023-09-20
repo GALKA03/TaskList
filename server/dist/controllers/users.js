@@ -18,7 +18,7 @@ const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Failed to fetch users.' });
+        return res.status(500).json({ error: "Failed to fetch users." });
     }
 });
 exports.getAllUsers = getAllUsers;
@@ -27,13 +27,13 @@ const getUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { id } = req.params;
         const user = yield (0, userService_1.getUserById)(id);
         if (!user) {
-            return res.status(404).json({ error: 'User not found.' });
+            return res.status(404).json({ error: "User not found." });
         }
         return res.json(user);
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Failed to fetch user.' });
+        return res.status(500).json({ error: "Failed to fetch user." });
     }
 });
 exports.getUserId = getUserId;
@@ -42,13 +42,13 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const { id } = req.params;
         const deletedUser = yield (0, userService_1.deleteUserById)(id);
         if (!deletedUser) {
-            return res.status(404).json({ error: 'User not found.' });
+            return res.status(404).json({ error: "User not found." });
         }
-        return res.json({ message: 'User deleted successfully.' });
+        return res.json({ message: "User deleted successfully." });
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Failed to delete user.' });
+        return res.status(500).json({ error: "Failed to delete user." });
     }
 });
 exports.deleteUser = deleteUser;
@@ -57,17 +57,17 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const { id } = req.params;
         const { username } = req.body;
         if (!username) {
-            return res.status(400).json({ error: 'Username is required.' });
+            return res.status(400).json({ error: "Username is required." });
         }
         const updatedUser = yield (0, userService_1.updateUserById)(id, { username });
         if (!updatedUser) {
-            return res.status(404).json({ error: 'User not found.' });
+            return res.status(404).json({ error: "User not found." });
         }
         return res.json(updatedUser);
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Failed to update user.' });
+        return res.status(500).json({ error: "Failed to update user." });
     }
 });
 exports.updateUser = updateUser;

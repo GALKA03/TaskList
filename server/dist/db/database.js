@@ -40,7 +40,7 @@ const sequelize = new sequelize_typescript_1.Sequelize({
     port: Number(process.env.POSTGRES_PORT),
     dialect: 'postgres',
     models: [userModel_1.default, tasksModel_1.default],
-    logging: console.log, // Logs SQL queries. Remove or set to false if you don't want to see logs.
+    logging: console.log,
 });
 exports.default = sequelize;
 //# sourceMappingURL=database.js.map

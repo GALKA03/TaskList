@@ -1,4 +1,3 @@
-// middlewares/authMiddleware.ts
 
 import { verifyToken, isTokenBlacklisted } from '../utils/jwtServices';
 import { Request as ExpressRequest, Response, NextFunction } from 'express';

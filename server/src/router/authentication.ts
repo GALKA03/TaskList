@@ -1,7 +1,7 @@
 import express from "express";
-// import {validateTokenMiddleware} from "../middlwares/middlWareAuth2"
+
 import { registerUser, loginUser, logoutUser} from "../controllers/authentication";
-// import { validateRegister, validateLogin } from "../middlwares/middlWareAuth2";
+
 import validateRequest  from "../middlwares/validateJoi";
 import { loginSchema, registrationSchema } from "../utils/validateAuth";
 

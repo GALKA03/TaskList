@@ -13,8 +13,8 @@ const sequelize = new Sequelize({
     host: process.env.POSTGRES_HOST,
     port: Number(process.env.POSTGRES_PORT),
     dialect: 'postgres',
-    models: [User, TasksModel],  // Add all your models here
-    logging: console.log,  // Logs SQL queries. Remove or set to false if you don't want to see logs.
+    models: [User, TasksModel], 
+    logging: console.log,  
 });
 
 export default sequelize;

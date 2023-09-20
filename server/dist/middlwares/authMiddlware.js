@@ -1,5 +1,4 @@
 "use strict";
-// middlewares/authMiddleware.ts
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticateToken = void 0;
 const jwtServices_1 = require("../utils/jwtServices");

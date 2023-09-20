@@ -18,14 +18,16 @@ const createNewTask = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const { title, text, status } = req.body;
         if (!title || !text) {
-            return res.status(400).json({ error: 'Both title and text are required.' });
+            return res
+                .status(400)
+                .json({ error: "Both title and text are required." });
         }
         const newTask = yield tasksModel_1.default.create({ title, text, status });
         return res.status(201).json(newTask);
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 });
 exports.createNewTask = createNewTask;
@@ -45,7 +47,7 @@ const getTaskId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const id = parseInt(req.params.id);
         const task = yield tasksModel_1.default.findByPk(id);
         if (!task)
-            return res.status(404).json({ error: 'Task not found' });
+            return res.status(404).json({ error: "Task not found" });
         return res.json(task);
     }
     catch (error) {
@@ -58,7 +60,7 @@ const deleteTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const id = parseInt(req.params.id);
         yield tasksModel_1.default.destroy({ where: { id } });
-        return res.json({ message: 'Task deleted successfully' });
+        return res.json({ message: "Task deleted successfully" });
     }
     catch (error) {
         console.error(error);
@@ -72,7 +74,7 @@ const updateTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const { title, text } = req.body;
         const task = yield tasksModel_1.default.findByPk(id);
         if (!task)
-            return res.status(404).json({ error: 'Task not found' });
+            return res.status(404).json({ error: "Task not found" });
         task.title = title;
         task.text = text;
         yield task.save();
@@ -80,7 +82,7 @@ const updateTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 });
 exports.updateTask = updateTask;

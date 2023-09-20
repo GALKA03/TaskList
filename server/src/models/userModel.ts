@@ -1,4 +1,3 @@
-// models/userModel.ts
 
 import { Model, Table, Column, DataType, PrimaryKey, Default, IsEmail, Unique, AllowNull, BeforeSave, BeforeUpdate } from 'sequelize-typescript';
 import * as bcrypt from 'bcrypt';

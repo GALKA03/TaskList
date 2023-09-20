@@ -30,24 +30,24 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(200).json(result);
     }
     catch (error) {
-        res.status(400).json({ message: 'Login failed', error: error.message });
+        res.status(400).json({ message: "Login failed", error: error.message });
     }
 });
 exports.loginUser = loginUser;
 const logoutUser = (req, res) => {
     var _a;
     try {
-        const token = (_a = req.headers['authorization']) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
+        const token = (_a = req.headers["authorization"]) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
         if (token) {
             (0, authServices_1.logoutUserService)(token);
-            res.status(200).json({ message: 'Logged out successfully' });
+            res.status(200).json({ message: "Logged out successfully" });
         }
         else {
-            throw new Error('Token not provided');
+            throw new Error("Token not provided");
         }
     }
     catch (error) {
-        res.status(400).json({ message: 'Logout failed', error: error.message });
+        res.status(400).json({ message: "Logout failed", error: error.message });
     }
 };
 exports.logoutUser = logoutUser;
@@ -56,10 +56,14 @@ const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const userData = req.body;
         const createdUser = yield (0, authServices_1.registerService)(userData);
         const _a = createdUser.dataValues, { user_password } = _a, userResponse = __rest(_a, ["user_password"]);
-        res.status(201).json({ message: 'User registered successfully', user: userResponse });
+        res
+            .status(201)
+            .json({ message: "User registered successfully", user: userResponse });
     }
     catch (error) {
-        res.status(400).json({ message: 'Registration failed', error: error.message });
+        res
+            .status(400)
+            .json({ message: "Registration failed", error: error.message });
     }
 });
 exports.registerUser = registerUser;
