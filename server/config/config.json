@@ -1,0 +1,23 @@
+
+{
+  "development": {
+  "username": "postgres",
+    "password": "password",
+    "database": "postgress",
+     "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres",
+    "operatorsAliases": false,
+    "migrationStorageTableName": "sequelize_meta",
+    "typescript": {
+      "tsconfig": "../tsconfig.json"  }
+  },
+ 
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
